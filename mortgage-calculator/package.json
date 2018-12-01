@@ -1,0 +1,73 @@
+{
+  "name": "mortgage-calculator",
+  "version": "",
+  "description": "",
+  "author": "Alan Zhang",
+  "license": "",
+  "engines": {
+    "node": ">=6.13.0"
+  },
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "build": "webpack --mode production",
+    "dev": "webpack -d --watch",
+    "init_postgres": "psql < database/postgres/postgresSchema.sql",
+    "seed_postgres": "psql < database/postgres/postgresSeed.sql",
+    "fake": "node database/fake.js",
+    "test": "./node_modules/.bin/jest",
+    "seed_mongo": "./database/mongodb/seedMongo.sh",
+    "index_mongo": "mongo < ./database/mongodb/mongoIndex.js"
+  },
+  "jest": {
+    "setupFiles": [
+      "./client/src/setupTests.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  },
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "body-parser": "^1.18.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "faker": "^4.1.0",
+    "json2csv": "^4.3.0",
+    "moment": "^2.22.2",
+    "mongoose": "^5.3.12",
+    "mysql": "^2.16.0",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "artillery": "^1.6.0-25",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.1",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-to-json": "^3.3.4",
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^23.6.0",
+    "jest-css-modules-transform": "^2.1.1",
+    "newrelic": "^4.11.0",
+    "regenerator-runtime": "^0.12.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.23.0",
+    "webpack-cli": "^3.1.2"
+  }
+}
